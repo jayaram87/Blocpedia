@@ -34,22 +34,22 @@ gem 'pry'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-   gem 'byebug'
-   gem 'web-console', '~> 2.0'
-   gem 'spring'
-   gem 'rspec-rails'
-   gem 'shoulda'
-   gem 'faker'
-   gem 'factory_girl_rails'
+    gem 'byebug'
+    gem 'spring'
+    gem 'rspec-rails'
+    gem 'shoulda'
+    gem 'faker'
+    gem 'factory_girl_rails'
 end
 
 group :development do
-  gem 'sqlite3'
+    gem 'sqlite3'
+    gem 'web-console', '~> 2.0'
 end
 
 group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+    gem 'pg'
+    gem 'rails_12factor'
 end
 
 gem 'devise'

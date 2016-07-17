@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'homepage#index'
   get 'users/show'
   get 'homepage/index'
+  resources :wikis
 end
