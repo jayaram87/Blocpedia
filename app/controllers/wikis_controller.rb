@@ -26,6 +26,7 @@ class WikisController < ApplicationController
     
     def edit
         @wiki = Wiki.find(params[:id])
+        authorize @wiki
     end
     
     def update
@@ -33,6 +34,7 @@ class WikisController < ApplicationController
         @wiki.title = params[:wiki][:title]
         @wiki.body = params[:wiki][:body]
         @wiki.private = params[:wiki][:private]
+        authorize @wiki
         
         if @wiki.save
             flash[:notice] = "Wiki updated"
