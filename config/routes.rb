@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'homepage/index'
   resources :wikis
+  resources :charges, only: [:new, :create]
 end
