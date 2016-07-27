@@ -6,7 +6,7 @@
    <%= f.text_area :body, class: 'form-control', placeholder: "Enter the body" %>
    
    
-   <% if current_user.role == "premium" %>
+   <% if current_user.premium? || current_user.admin? %>
       <%= f.label :private %>
       <%= f.check_box :private, class: 'checkbox' %>
    <% end %>

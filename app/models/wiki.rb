@@ -1,16 +1,10 @@
 class Wiki < ActiveRecord::Base
   
-  belongs_to :user
+  belongs_to :users
   
-  after_create :user_wikis
-  
-  scope :visible_to, -> (user) { user && ( user.premium || user.admin ) ? all : where(private: false) }
-  
-  private
-  def user_wikis
-    if user.role == "premium"
-      self.update_attributes(private: true)
-    end
-  end
+  scope :visible_to, -> (user) { 
+    return all if (user && (user.premium? || user.admin? ))
+    where(private: false)
+  }
 
 end
