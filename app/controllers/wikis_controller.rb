@@ -1,17 +1,19 @@
 class WikisController < ApplicationController
 
     def index
-        if current_user.role == "premium"
-            @wikis = Wiki.all
-        else
-            @wikis = Wiki.where(:private, false).all
-        end
+        @wikis = Wiki.visible_to(current_user)
     end
     
     def show
         @wiki = Wiki.find(params[:id])
+        
+        unless @wiki.private || current_user
+            flash[:alert] = "New to upgrade to premium membership"
+            redirect_to new_charge_path
+        end
+        
     end
-    
+
     def new
         @wiki = Wiki.new
     end
