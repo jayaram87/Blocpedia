@@ -20,7 +20,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'bootstrap-sass'
-gem 'figaro'
+gem 'figaro', '1.0'
 gem 'pry'
 
 # Use ActiveModel has_secure_password
@@ -40,6 +40,7 @@ group :development, :test do
     gem 'shoulda'
     gem 'faker'
     gem 'factory_girl_rails'
+    gem 'simplecov'
 end
 
 group :development do
@@ -56,3 +57,4 @@ gem 'devise'
 
 gem 'pundit'
 
+gem 'stripe'

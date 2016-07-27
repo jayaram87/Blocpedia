@@ -5,6 +5,10 @@ RSpec.describe WikisController, type: :controller do
     let(:my_user) { User.create!(email: "jayaramraja1987@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now) }
     let(:my_wiki) { Wiki.create!(title: "jayaramraja1987", body: "ssssssssssssssssssssss", user: my_user) }
 
+    before :each do
+        sign_in my_user
+    end
+    
     describe "GET show" do
         it "returns http success" do
             get :show, {id: my_wiki.id}

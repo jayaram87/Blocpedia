@@ -1,8 +1,15 @@
 <h1>Welcome to Blocpedia</h1>
 <% if user_signed_in? %>
-</br><%= link_to "NEW WIKI", new_wiki_path, class: 'btn btn-success'%>
-</br>
-<% Wiki.all.each do |f| %>
-    </br><%= link_to f.title, wiki_path(f) %>
-<% end %>
+    </br><%= link_to "NEW WIKI", new_wiki_path, class: 'btn btn-success'%>
+    <% if current_user.role == "standard" %>
+        <%= link_to 'Upgrade', new_charge_path, class: 'btn btn-success' %>
+        <% Wiki.where(private: false).all.each do |f| %>
+            </br><%= link_to f.title, wiki_path(f) %>
+        <% end %>
+    <% else %>
+        <%= link_to 'Downgrade', users_show_path, class: 'btn btn-danger' %>
+        <% Wiki.all.each do |f| %>
+            </br><%= link_to f.title, wiki_path(f) %>
+        <% end %>
+    <% end %>
 <% end %>
