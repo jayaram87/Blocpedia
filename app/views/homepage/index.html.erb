@@ -2,16 +2,12 @@
 <% if user_signed_in? %>
     </br><%= link_to "NEW WIKI", new_wiki_path, class: 'btn btn-success'%>
     <% if current_user.standard? %>
-        <%= link_to new_charge_path, class: 'btn btn-success' %> Upgrade
-            <% current_user.update(role: "premium") %>
-        <% end %>
+        <%= link_to "Upgrade", new_charge_path, class: 'btn btn-success' %>
         <% Wiki.where(private: false).all.each do |f| %>
             </br><%= link_to f.title, wiki_path(f) %>
         <% end %>
     <% else %>
-        <%= link_to homepage_index_path, class: 'btn btn-danger' do %> Downgrade
-            <% current_user.update(role: "standard") %>
-        <% end %>
+        <%= link_to "Downgrade", downgrade_user_charges_path, method: :put, class: 'btn btn-danger' %>
         <% Wiki.all.each do |f| %>
             </br><%= link_to f.title, wiki_path(f) %>
         <% end %>

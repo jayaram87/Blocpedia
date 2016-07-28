@@ -6,5 +6,10 @@ class Wiki < ActiveRecord::Base
     return all if (user && (user.premium? || user.admin? ))
     where(private: false)
   }
+  
+  def make_public
+    self.private = false
+    save!
+  end
 
 end
