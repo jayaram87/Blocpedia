@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'homepage/index'
   resources :wikis
-  resources :charges, only: [:new, :create]
+  resources :charges, only: [:new, :create] do
+    collection do 
+      put :downgrade_user
+    end
+  end
 end
