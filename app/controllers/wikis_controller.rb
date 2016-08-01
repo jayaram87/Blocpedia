@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
 
     def index
-        @wikis = Wiki.visible_to(current_user)
+        @wikis = policy_scope(Wiki)
     end
     
     def show
@@ -23,7 +23,6 @@ class WikisController < ApplicationController
         @wiki.title = params[:wiki][:title]
         @wiki.body = params[:wiki][:body]
         @wiki.private = params[:wiki][:private]
-        @wiki.user = current_user
         
         if @wiki.save
             flash[:notice] = "Wiki created"

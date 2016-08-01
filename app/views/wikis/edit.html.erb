@@ -12,3 +12,4 @@
  
    <%= f.submit "Save", class: 'btn btn-success' %>
 <% end %>
+<%= render partial: "collaboration/form", locals: {wiki: @wiki, user: @user, collaboration: @collaboration} %>
