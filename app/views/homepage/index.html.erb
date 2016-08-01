@@ -4,12 +4,12 @@
     <% if current_user.standard? %>
         <%= link_to "Upgrade", new_charge_path, class: 'btn btn-success' %>
         <% Wiki.where(private: false).all.each do |f| %>
-            </br><%= link_to f.title, wiki_path(f) %>
+            </br><%= markdown(link_to f.title, wiki_path(f)) %>
         <% end %>
     <% else %>
         <%= link_to "Downgrade", downgrade_user_charges_path, method: :put, class: 'btn btn-danger' %>
         <% Wiki.all.each do |f| %>
-            </br><%= link_to f.title, wiki_path(f) %>
+            </br><%= markdown(link_to f.title, wiki_path(f)) %>
         <% end %>
     <% end %>
 <% end %>
