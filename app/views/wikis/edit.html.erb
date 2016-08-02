@@ -12,4 +12,10 @@
  
    <%= f.submit "Save", class: 'btn btn-success' %>
 <% end %>
-<%= render partial: "collaboration/form", locals: {wiki: @wiki, user: @user, collaboration: @collaboration} %>
+<% if @wiki.private? %>
+   <h1> Collaborations </h1>
+   <% User.all.each do |user| %>
+         <%= link_to "#{user.email}", collaborations_path(user, @wiki), class: 'btn btn-success' %>
+         </br>
+   <% end %>
+<% end %>

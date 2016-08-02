@@ -33,6 +33,7 @@ class WikisController < ApplicationController
     def edit
             @wiki = Wiki.find(params[:id])
             authorize @wiki
+            collaborations = Collaboration.all
     end
     
     def update
