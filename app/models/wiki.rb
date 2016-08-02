@@ -9,7 +9,7 @@ class Wiki < ActiveRecord::Base
   
   def make_public
     self.private = false
-    save!
+    save
   end
 
 end
