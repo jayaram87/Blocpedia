@@ -10,5 +10,4 @@ Rails.application.routes.draw do
     end
   end
   resources :collaborations, only: [:create, :destroy]
-  
 end
