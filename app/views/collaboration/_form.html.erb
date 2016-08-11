@@ -1,0 +1,4 @@
+<% form_tag [wiki, user, collaboration] do %>
+    <%= search_field(:user, :email) %>
+    <%= link_to "Add User", collaborations_path(user, wiki), method: :post, class: 'btn btn-success' %>
+<% end %>

@@ -1,0 +1,15 @@
+class CreateCollaborations < ActiveRecord::Migration
+  def change
+    create_table :collaborations do |t|
+      
+      t.integer :user_id
+      t.integer :wiki_id
+      
+      t.references :user, index: true, foreign_key: true
+      t.references :wiki, index: true, foreign_key: true
+      
+      t.timestamps null: false
+    end
+    
+  end
+end

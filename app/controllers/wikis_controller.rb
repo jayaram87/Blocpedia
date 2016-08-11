@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
 
     def index
-        @wikis = Wiki.visible_to(current_user)
+        @wikis = policy_scope(Wiki)
     end
     
     def show
@@ -34,6 +34,7 @@ class WikisController < ApplicationController
     def edit
             @wiki = Wiki.find(params[:id])
             authorize @wiki
+            collaborations = Collaboration.all
     end
     
     def update
