@@ -9,5 +9,5 @@ Rails.application.routes.draw do
       put :downgrade_user
     end
   end
-  
+  resources :collaborations, only: [:create, :destroy]
 end
