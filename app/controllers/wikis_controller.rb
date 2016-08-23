@@ -32,9 +32,13 @@ class WikisController < ApplicationController
     end
     
     def edit
-            @wiki = Wiki.find(params[:id])
-            authorize @wiki
-            collaborations = Collaboration.all
+        @wiki = Wiki.find(params[:id])
+        authorize @wiki
+        if @wiki.private?
+            @eligible_collaborators = User.all.reject{ |user| user == current_user }
+        else    
+            @eligible_collaborators = User.none
+        end
     end
     
     def update

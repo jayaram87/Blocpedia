@@ -1,0 +1,15 @@
+<h1>Welcome to Blocpedia</h1>
+<% if user_signed_in? %>
+    </br><%= link_to "NEW WIKI", new_wiki_path, class: 'btn btn-success'%>
+    <% if current_user.standard? %>
+        <%= link_to "Upgrade", new_charge_path, class: 'btn btn-success' %>
+        <% policy_scope(Wiki).each do |f| %>
+            </br><%= markdown(link_to f.title, wiki_path(f)) %>
+        <% end %>
+    <% else %>
+        <%= link_to "Downgrade", downgrade_user_charges_path, method: :put, class: 'btn btn-danger' %>
+        <% policy_scope(Wiki).each do |f| %>
+            </br><%= markdown(link_to f.title, wiki_path(f)) %>
+        <% end %>
+    <% end %>
+<% end %>
